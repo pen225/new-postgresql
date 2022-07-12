@@ -7,6 +7,20 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+const { Sequelize } = require('sequelize');
+const sequelize = new Sequelize('postgres://ljoggwullmsxxs:51f1d03fe914d530b853fac9a0780276e3a6a8e1912caebdc5e380267eed45c9@ec2-3-219-52-220.compute-1.amazonaws.com:5432/d621k26bqnaiv7')
+
+// const sequelize = new Sequelize('d621k26bqnaiv7', 'ljoggwullmsxxs', '51f1d03fe914d530b853fac9a0780276e3a6a8e1912caebdc5e380267eed45c9', {
+//   host: 'ec2-3-219-52-220.compute-1.amazonaws.com',
+//   dialect: 'postgres'
+// });
+
+// try {
+//   sequelize.authenticate();
+//   console.log('Connection has been established successfully.');
+// } catch (error) {
+//   console.error('Unable to connect to the database:', error);
+// }
 // var {Client} = require('pg');
 
 // const client = new Client({
