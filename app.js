@@ -7,49 +7,42 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize('postgres://ljoggwullmsxxs:51f1d03fe914d530b853fac9a0780276e3a6a8e1912caebdc5e380267eed45c9@ec2-3-219-52-220.compute-1.amazonaws.com:5432/d621k26bqnaiv7')
-
-// const sequelize = new Sequelize('d621k26bqnaiv7', 'ljoggwullmsxxs', '51f1d03fe914d530b853fac9a0780276e3a6a8e1912caebdc5e380267eed45c9', {
-//   host: 'ec2-3-219-52-220.compute-1.amazonaws.com',
-//   dialect: 'postgres'
-// });
-
-// try {
-//   sequelize.authenticate();
-//   console.log('Connection has been established successfully.');
-// } catch (error) {
-//   console.error('Unable to connect to the database:', error);
-// }
 // var {Client} = require('pg');
 
 // const client = new Client({
-//   user: 'lzdntrcnigsqge',
-//   host: 'ec2-52-48-159-67.eu-west-1.compute.amazonaws.com',
-//   database: 'dbruko73j9tpvu',
-//   password: 'd81f03d43ea50e9017be095fef315f32d182ee28172da5e924f6d63a1d7894f4',
+//   user: 'ljoggwullmsxxs',
+//   host: 'ec2-3-219-52-220.compute-1.amazonaws.com',
+//   database: 'd621k26bqnaiv7',
+//   password: '51f1d03fe914d530b853fac9a0780276e3a6a8e1912caebdc5e380267eed45c9',
 //   port: 5432,
-// })
+//   ssl: {
+//     rejectUnauthorized: false
+//   }
+// });
+
 // client.connect(function(err) {
 //   if (err) throw err;
 //   console.log("Connected!");
 // });
+// client.connect()
+const { Sequelize } = require('sequelize');
+const sequelize = new Sequelize('d621k26bqnaiv7', 'ljoggwullmsxxs', '51f1d03fe914d530b853fac9a0780276e3a6a8e1912caebdc5e380267eed45c9', {
+  host: 'ec2-3-219-52-220.compute-1.amazonaws.com',
+  dialect: 'postgres',
+  dialectOptions: {
+    ssl: {
+          rejectUnauthorized: false
+        }
+  }
+});
 
+try {
+  sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
 
-// var Pool = require('pg-pool');
-// var pool = new Pool({
-//   database: 'dbruko73j9tpvu',
-//   user: 'lzdntrcnigsqge',
-//   password: 'd81f03d43ea50e9017be095fef315f32d182ee28172da5e924f6d63a1d7894f4',
-//   port: 5432,
-//   ssl: true,
-//   max: 20, // set pool max size to 20
-//   idleTimeoutMillis: 1000, // close idle clients after 1 second
-//   connectionTimeoutMillis: 1000, // return an error after 1 second if connection could not be established
-//   maxUses: 7500, // close (and replace) a connection after it has been used 7500 times (see below for discussion)
-// });
-
-// pool.connect()
 
 var app = express();
 
