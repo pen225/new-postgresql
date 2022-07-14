@@ -3,45 +3,18 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+// const sequelize = require('./config/database');
 
-// var {Client} = require('pg');
-
-// const client = new Client({
-//   user: 'ljoggwullmsxxs',
-//   host: 'ec2-3-219-52-220.compute-1.amazonaws.com',
-//   database: 'd621k26bqnaiv7',
-//   password: '51f1d03fe914d530b853fac9a0780276e3a6a8e1912caebdc5e380267eed45c9',
-//   port: 5432,
-//   ssl: {
-//     rejectUnauthorized: false
-//   }
+// sequelize.authenticate()
+// .then((result) => {
+//   console.log('Connection has been established successfully.');
+// }).catch((err) => {
+//   console.error('Unable to connect to the database:', err);
 // });
-
-// client.connect(function(err) {
-//   if (err) throw err;
-//   console.log("Connected!");
-// });
-// client.connect()
-const { Sequelize } = require('sequelize');
-const sequelize = new Sequelize('d621k26bqnaiv7', 'ljoggwullmsxxs', '51f1d03fe914d530b853fac9a0780276e3a6a8e1912caebdc5e380267eed45c9', {
-  host: 'ec2-3-219-52-220.compute-1.amazonaws.com',
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-          rejectUnauthorized: false
-        }
-  }
-});
-
-try {
-  sequelize.authenticate();
-  console.log('Connection has been established successfully.');
-} catch (error) {
-  console.error('Unable to connect to the database:', error);
-}
 
 
 var app = express();
