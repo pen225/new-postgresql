@@ -7,14 +7,14 @@ require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-// const sequelize = require('./config/database');
+const sequelize = require('./config/database');
 
-// sequelize.authenticate()
-// .then((result) => {
-//   console.log('Connection has been established successfully.');
-// }).catch((err) => {
-//   console.error('Unable to connect to the database:', err);
-// });
+sequelize.authenticate()
+.then((result) => {
+  console.log('Connection has been established successfully.');
+}).catch((err) => {
+  console.error('Unable to connect to the database:', err);
+});
 
 
 var app = express();
